@@ -1,0 +1,57 @@
+#Fixed values
+#HCN 20211118 1728 Zones with IDs
+
+
+#Sizes
+#Zones (by Regions)
+#OS (Images by versions)
+
+Sizes
+
+
+
+
+Regions and Zones
+NYC1, NYC2*, NYC3: New York City, United States
+AMS2*, AMS3: Amsterdam, the Netherlands
+SFO1*, SFO2*: San Francisco, United States
+SGP1: Singapore
+LON1: London, United Kingdom
+FRA1: Frankfurt, Germany
+TOR1: Toronto, Canada
+BLR1: Bangalore, India
+
+*Currently unavailable for new users (full capacity)
+
+
+Images (OS) --falta identificar los ID de cada imagen que se usa en el API
+Ubuntu
+21.10 x64
+21.04 x64
+20.04 (LTS) x64
+18.04.3 (LTS) x64	
+
+Debian
+11.0 x64
+10.3 x64
+9.12 x64	
+
+CentOS
+8.3 x64
+7.6 x64
+Stream:
+8 x64	
+
+Rocky Linux
+8.4 x64
+
+Fedora
+35 x64
+34 x64
+33 x64	
+
+FreeBSD
+12.2 x64 zfs
+12.2 x64 ufs
+11.4 x64 zfs
+11.4 x64 ufs
