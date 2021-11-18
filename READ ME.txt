@@ -1,0 +1,23 @@
+#Read me file
+Hi! We are group U, and our group consists of Ivanelyz Rivera, Gloriel Soto and Haniel Cordero for the  ICOM4036 / CIIC4030 class. 
+
+We present #Infrastructure as a service (IaaS), this is a type of cloud computing service that offers essential compute, storage and networking resources that are on demand! 
+
+We wanted to cerate a language that lets users create servers by coding repeptitive tasks and automate the virtual server creations! Therefore, the project will be in the memory management branch of coding. 
+
+------------------------------- INSTRUCTIONS -------------------------------
+###
+#Create a New Droplet
+#To create a new Droplet, send a POST request to /v2/droplets setting the required attributes.
+#A Droplet will be created using the provided information. The response body will contain a JSON object with a key called droplet.
+#The value will be an object containing the standard attributes for your new Droplet. The response code, 202 Accepted, does not indicate the success or failure of the operation, just that the request has been accepted for processing. The actions returned as part of the response's links object can be used to check the status of the Droplet create event.
+
+#Create Multiple Droplets
+#Creating multiple Droplets is very similar to creating a single Droplet. Instead of sending name as a string, send names as an array of strings. A Droplet will be created for each name you send using the associated information. Up to ten Droplets may be created this way at a time.
+#Rather than returning a single Droplet, the response body will contain a JSON array with a key called droplets.
+#This will be set to an array of JSON objects, each of which will contain the standard Droplet attributes.
+#The response code, 202 Accepted, does not indicate the success or failure of any operation, just that the request has been accepted for processing.
+#The array of actions returned as part of the response's links object can be used to check the status of each individual Droplet create event.
+
+#info https://docs.digitalocean.com/reference/api/api-reference/#operation/create_droplet
+
