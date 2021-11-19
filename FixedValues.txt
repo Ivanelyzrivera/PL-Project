@@ -1,19 +1,44 @@
 #Fixed values
 #HCN 20211118   1728 Zones with IDs
-                2030 List zones with connectivity issues informed by Digital Ocean's banner.
-                23:16 Downloaded the OS Images' json list from the API and filtered with Python3
-
+#               2030 List zones with connectivity issues informed by Digital Ocean's banner.
+#               2316 Fetch the OS Images' json list from the API and filtered with Pandas in Python.
+#HCN 20211119   0001 Fetch the Sizes' json list from the API and filtered with Pandas in Python.
+#               0004 Add syntax validation for the unique name
+#
+#Content
 #Sizes
 #Zones (by Regions)
 #OS (Images by versions)
 
+
 Sizes
+slug	            disk	bandwidth	price 	description     unique name
+s-1vcpu-1gb-amd	    25	    1	        6	    Basic AMD       a1x1  (validation Character, Integer, Character x, Integer)
+s-1vcpu-1gb-intel	25	    1	        6	    Basic Intel     i1x1
+s-1vcpu-2gb-amd	    50	    2	        12	    Basic AMD       a1x2
+s-1vcpu-2gb-intel	50	    2	        12	    Basic Intel     i1x2
+s-2vcpu-2gb-amd	    60	    3	        18	    Basic AMD       a2x2
+s-2vcpu-2gb-intel	60	    3	        18	    Basic Intel     i2x2
+s-2vcpu-4gb-amd	    80	    4	        24	    Basic AMD       a2x4
+s-2vcpu-4gb-intel	80	    4	        24	    Basic Intel     i2x4
+s-4vcpu-8gb-amd	    160	    5	        48	    Basic AMD       a4x8
+s-4vcpu-8gb-intel	160	    5       	48	    Basic Intel     i4x8
 
-
-
+***Sizes eliminados por conveniencia de nomenclatura***
+slug	            disk	bandwidth	price 	description
+s-1vcpu-1gb	        25	    1	        5	    Basic
+s-1vcpu-2gb	        50	    2	        10	    Basic
+s-2vcpu-2gb	        60	    3	        15	    Legacy Basic
+s-2vcpu-4gb	        80	    4	        20	    Basic
+s-4vcpu-8gb	        160	    5	        40	    Basic
+c-2	                25	    4	        40	    CPU-Optimized
+g-2vcpu-8gb	        25	    4       	60	    General Purpose
+gd-2vcpu-8gb	    50	    4       	65	    General Purpose 2x SSD
+m-2vcpu-16gb	    50	    4       	80	    Memory-Optimized
+c-4	                50	    5       	80	    CPU-Optimized
 
 Regions and Zones+
-NYC1, NYC2*, NYC3: New York City, United States
+NYC1, NYC2*, NYC3: New York City, United States  (validation Character, Character, Character, Integer)
 AMS2*, AMS3: Amsterdam, the Netherlands
 SFO1*, SFO2*: San Francisco, United States
 SGP1: Singapore
@@ -26,24 +51,25 @@ BLR1: Bangalore, India
 +Zones with current technical issues: FRA1, LON1, NBG1
 
 Images (OS)
-69452245	freebsd-11-x64-zfs	FreeBSD 11.4 ZFS                free11z
-69500386	freebsd-11-x64-ufs	FreeBSD 11.4 UFS                free11u
-77558491	freebsd-12-x64-ufs	FreeBSD 12.2 UFS                free12u
-77558552	freebsd-12-x64-zfs	FreeBSD 12.2 ZFS                free12z
-78547182	rancheros	        RancherOS 1.5.8 x86 image       ranch1
-84780898	fedora-34-x64	    Fedora 34 x64                   fedora
-85722003	centos-7-x64	    CentOS 7 x64                    centos7
-85779954	centos-8-x64	    CentOS 8.3 x64                  centos8
-85779974	debian-9-x64	    Debian 9 x86 image              debian9
-85780245	fedora-33-x64	    Fedora 33 x64                   fedora33
-86718194	debian-10-x64	    Debian 10 Image                 debian10
-89199942	rockylinux-8-x64	RockyLinux 8.4 x64              rocky8
-89246461	centos-stream-8-x64	CentOS Stream 8 x64             centos8s
-92517214	debian-11-x64	    Debian 11 Image                 debian11
-93524084	ubuntu-18-04-x64	Ubuntu 18.04 x86 image          ubuntu18
-93525508	ubuntu-20-04-x64	Ubuntu 20.04 x86                ubuntu20
-94389391	ubuntu-21-10-x64	Ubuntu 21.10 x64                ubuntu21
-95344509	fedora-35-x64	    Fedora 35 x64                   fedora35
+id          slug                description                     option2     unique name
+69452245	freebsd-11-x64-zfs	FreeBSD 11.4 ZFS                free11z     z11 (validation Character, integer)
+69500386	freebsd-11-x64-ufs	FreeBSD 11.4 UFS                free11u     u11
+77558491	freebsd-12-x64-ufs	FreeBSD 12.2 UFS                free12u     u12
+77558552	freebsd-12-x64-zfs	FreeBSD 12.2 ZFS                free12z     z12
+78547182	rancheros	        RancherOS 1.5.8 x86 image       ranch1      r1
+84780898	fedora-34-x64	    Fedora 34 x64                   fedora34    f34
+85722003	centos-7-x64	    CentOS 7 x64                    centos7     c7
+85779954	centos-8-x64	    CentOS 8.3 x64                  centos8     c8
+85779974	debian-9-x64	    Debian 9 x86 image              debian9     d9
+85780245	fedora-33-x64	    Fedora 33 x64                   fedora33    f33
+86718194	debian-10-x64	    Debian 10 Image                 debian10    d10
+89199942	rockylinux-8-x64	RockyLinux 8.4 x64              rocky8      r8
+89246461	centos-stream-8-x64	CentOS Stream 8 x64             centos8s    s8
+92517214	debian-11-x64	    Debian 11 Image                 debian11    d11
+93524084	ubuntu-18-04-x64	Ubuntu 18.04 x86 image          ubuntu18    u18
+93525508	ubuntu-20-04-x64	Ubuntu 20.04 x86                ubuntu20    u20
+94389391	ubuntu-21-10-x64	Ubuntu 21.10 x64                ubuntu21    u21
+95344509	fedora-35-x64	    Fedora 35 x64                   fedora35    f35
 
-Eliminado por conveniencia de nomenclatura
+***Images eliminados por conveniencia de nomenclatura***
 85781040	ubuntu-21-04-x64	Ubuntu 21.04 x64
