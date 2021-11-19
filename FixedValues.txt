@@ -1,0 +1,49 @@
+#Fixed values
+#HCN 20211118   1728 Zones with IDs
+                2030 List zones with connectivity issues informed by Digital Ocean's banner.
+                23:16 Downloaded the OS Images' json list from the API and filtered with Python3
+
+#Sizes
+#Zones (by Regions)
+#OS (Images by versions)
+
+Sizes
+
+
+
+
+Regions and Zones+
+NYC1, NYC2*, NYC3: New York City, United States
+AMS2*, AMS3: Amsterdam, the Netherlands
+SFO1*, SFO2*: San Francisco, United States
+SGP1: Singapore
+LON1: London, United Kingdom
+FRA1: Frankfurt, Germany
+TOR1: Toronto, Canada
+BLR1: Bangalore, India
+
+*Currently unavailable for new users (full capacity)
++Zones with current technical issues: FRA1, LON1, NBG1
+
+Images (OS)
+69452245	freebsd-11-x64-zfs	FreeBSD 11.4 ZFS                free11z
+69500386	freebsd-11-x64-ufs	FreeBSD 11.4 UFS                free11u
+77558491	freebsd-12-x64-ufs	FreeBSD 12.2 UFS                free12u
+77558552	freebsd-12-x64-zfs	FreeBSD 12.2 ZFS                free12z
+78547182	rancheros	        RancherOS 1.5.8 x86 image       ranch1
+84780898	fedora-34-x64	    Fedora 34 x64                   fedora
+85722003	centos-7-x64	    CentOS 7 x64                    centos7
+85779954	centos-8-x64	    CentOS 8.3 x64                  centos8
+85779974	debian-9-x64	    Debian 9 x86 image              debian9
+85780245	fedora-33-x64	    Fedora 33 x64                   fedora33
+86718194	debian-10-x64	    Debian 10 Image                 debian10
+89199942	rockylinux-8-x64	RockyLinux 8.4 x64              rocky8
+89246461	centos-stream-8-x64	CentOS Stream 8 x64             centos8s
+92517214	debian-11-x64	    Debian 11 Image                 debian11
+93524084	ubuntu-18-04-x64	Ubuntu 18.04 x86 image          ubuntu18
+93525508	ubuntu-20-04-x64	Ubuntu 20.04 x86                ubuntu20
+94389391	ubuntu-21-10-x64	Ubuntu 21.10 x64                ubuntu21
+95344509	fedora-35-x64	    Fedora 35 x64                   fedora35
+
+Eliminado por conveniencia de nomenclatura
+85781040	ubuntu-21-04-x64	Ubuntu 21.04 x64
