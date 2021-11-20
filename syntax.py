@@ -1,70 +1,71 @@
 # Author: Gloriel M. Soto Maldonado
 
 import ply.yacc as yacc
-# import lexer
-# tokens = lexer.tokens
+import lexer
 
-def mainexplist(p):
-    """mainexplist : explist
-		           | empty"""
+tokens = lexer.tokens
 
 
-def explist(p):
-    """explist : exp
-               | exp COMMA explist"""
+def p_explist(p):
+    """explist  : propexplist
+                | empty"""
 
 
-def exp(p):
-    """exp : term
-           | term binop exp
-           | IF exp THEN exp ELSE exp
-           | LET def IN exp
-           | MAP idlist TO exp"""
+def p_propexplist(p):
+    """propexplist  : exp
+                    | exp COMMA propexplist"""
 
 
-def term(p):
+def p_exp(p):
+    """exp  : term
+            | term binop exp
+            | IF exp THEN exp ELSE exp
+            | LET def IN exp
+            | MAP idlist TO exp"""
+
+
+def p_term(p):
     """term : unop term
             | factor
-            | factor LP mainexplist RP
+            | factor LP explist RP
             | empty
             | int
-	        | string
+            | string
             | bool"""
 
 
-def factor(p):
+def p_factor(p):
     """factor   : LP exp RP
                 | prim
-                | id
-		        | string"""
+                | id"""
 
 
-def define(p):
-    """define  : id ASSIGN exp SC
-                | id ASSIGN exp SC define"""
+def p_def(p):
+    """def  : id ASSIGN exp SC
+            | id ASSIGN exp SC def"""
 
 
-def idlist(p):
+def p_idlist(p):
     """idlist   : propidlist
                 | empty"""
 
 
-def propidlist(p):
+def p_propidlist(p):
     """propidlist   : id
                     | id COMMA propidlist"""
 
 
-def bool(p):
+def p_bool(p):
     """bool : TRUE
             | FALSE"""
 
 
-def unop(p):
+def p_unop(p):
     """unop : sign
             | TILDE """
 
 
-def binop(p):
+def p_binop(p):
     """binop    : sign
                 | TIMES
                 | DIVIDE
@@ -78,12 +79,12 @@ def binop(p):
                 | OR """
 
 
-def sign(p):
+def p_sign(p):
     """sign : PLUS
             | MINUS """
 
 
-def prim(p):
+def p_prim(p):
     """prim : NUMQ
             | FUNQ
             | LISTQ
@@ -95,42 +96,43 @@ def prim(p):
             | ARITY"""
 
 
-def id(p):
-    """id   :
-            | id
-            | int
-            | int id
-            | string
-            | string id"""
+def p_id(p):
+    """id   : type
+            | type int
+            | type string"""
+
+
+def p_type(p):
+    """type :
+            | NAME
+            | REGION
+            | SERVER
+            | OS
+            | ID
+            | TAG"""
 
 
 # def p_id(p):
-#     '''id   :
-#             | id CHARACTER?
-#             | id DIGIT
-#             | id NAME
-#             | id REGION
-#             | id SERVER
-#             | id ID
-#             | id TAG
-#             | id OS '''
+#     '''id   : CHARACTER
+#             | id CHARACTER
+#             | id DIGIT '''
 
-def int(p):
+def p_int(p):
     """int  : DIGIT
             | DIGIT int"""
 
 
-def string(p):
-    """string : CHARACTER
-              | CHARACTER string"""
+def p_string(p):
+    """string  : CHARACTER
+               | CHARACTER string"""
 
 
-def empty(p):
-    """empty :
-             | EMPTY"""
+def p_empty(p):
+    """empty    :
+                | EMPTY"""
 
 
-def error(p):
+def p_error(p):
     print("Syntax Error: ")
     print(p)
     raise TypeError("Error in Syntax. Check token above to fix.")
