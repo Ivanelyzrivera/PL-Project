@@ -98,3 +98,10 @@ if __name__ == '__main__':
 
     result, error = lang.run('<stdin>', text)
 
+#Network1 = {type : private, ip : 4, region : New York}
+#Droplets1 = {PremiumIntel1 : RockyLinux8.4x64 , Basic2 : 
+#CentOS8x64, PremiumAMD1 : FreeBSD12.2}
+#for i in droplets1:
+#Create droplets1(i) in network1
+#Status = status + “/n“ + (return)
+#Print (status)
