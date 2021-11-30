@@ -13,6 +13,8 @@ Also, our Syntax Analyzer is going to take the input from a lexical analyzer and
 And, finally our intermediate code is where the droplets and main functions of the code are going to be.
 The Droplets are a linux based VMs that are used to run on top of virtualized hardware.
 Each Droplet that we create, is a new server you can use and part of the cloud based infrastructure.
+
+
 ------------------------------- INSTRUCTIONS -------------------------------
 
 1. Download the latest stable version of Python. 
