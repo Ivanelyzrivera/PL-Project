@@ -1,4 +1,7 @@
+# PL-Project
+PL Project 
 #Read me file
+
 Hi! We are group U, and our group consists of Ivanelyz Rivera, Gloriel Soto and Haniel Cordero for the  ICOM4036 / CIIC4030 class. 
 
 We present #Infrastructure as a service (IaaS), this is a type of cloud computing service that offers essential compute, storage and networking resources that are on demand! 
@@ -11,7 +14,7 @@ And, finally our intermediate code is where the droplets and main functions of t
 The Droplets are a linux based VMs that are used to run on top of virtualized hardware.
 Each Droplet that we create, is a new server you can use and part of the cloud based infrastructure.
 ------------------------------- INSTRUCTIONS -------------------------------
-How to get everything set up:
+
 1. Download the latest stable version of Python. 
 -> https://www.python.org/downloads/ 
  
