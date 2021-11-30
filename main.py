@@ -1,13 +1,20 @@
 # AUTHOR: Gloriel M. Soto Maldonado
+
 import sys
 
+from ply import yacc
+import lexer
+import syntax
 import intermediate
 
 if __name__ == "__main__":
 
+    lexer.lex
+    syntax.yacc
+
     if intermediate.token == "":
         print(
-            "%s[Error]%s Please first set your DigitalOcean API token at the top of the script." % (
+            "%s[Error]%s Please first set your DigitalOcean token in 'intermediate.py." % (
                 intermediate.c["r"], intermediate.c["e"]))
         exit()
 
@@ -70,17 +77,18 @@ if __name__ == "__main__":
             exit()
 
         else:
-            print("%s[Error]%s Option '%s' not recognised, see '%s --help'" % (intermediate.c["r"], intermediate.c["e"], option, sys.argv[0]))
+            print("%s[Error]%s Option '%s' not recognised, see '%s --help'" % (
+                intermediate.c["r"], intermediate.c["e"], option, sys.argv[0]))
             exit()
 
 
     elif "-i" in sys.argv:
-        intermediate.interactive_build()
+        intermediate.build()
         exit()
 
     elif "-f" in sys.argv:
         lista = intermediate.parse_file(sys.argv[sys.argv.index("-f") + 1])
-        intermediate.create_droplets_from_list(lista)
+        intermediate.create_from_list(lista)
         exit()
     else:
         intermediate.usage()

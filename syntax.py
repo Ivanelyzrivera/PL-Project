@@ -7,8 +7,7 @@ tokens = lexer.tokens
 
 
 def p_explist(p):
-    """explist  : propexplist
-                | empty"""
+    """explist  : propexplist"""
 
 
 def p_propexplist(p):
@@ -19,16 +18,13 @@ def p_propexplist(p):
 def p_exp(p):
     """exp  : term
             | term binop exp
-            | IF exp THEN exp ELSE exp
-            | LET def IN exp
-            | MAP idlist TO exp"""
+            | IF exp THEN exp ELSE exp"""
 
 
 def p_term(p):
     """term : unop term
             | factor
             | factor LP explist RP
-            | empty
             | int
             | string
             | bool"""
@@ -36,18 +32,12 @@ def p_term(p):
 
 def p_factor(p):
     """factor   : LP exp RP
-                | prim
                 | id"""
 
 
 def p_def(p):
-    """def  : id ASSIGN exp SC
-            | id ASSIGN exp SC def"""
-
-
-def p_idlist(p):
-    """idlist   : propidlist
-                | empty"""
+    """def  : id ASSIGN exp
+            | id ASSIGN exp def"""
 
 
 def p_propidlist(p):
@@ -61,8 +51,7 @@ def p_bool(p):
 
 
 def p_unop(p):
-    """unop : sign
-            | TILDE """
+    """unop : sign """
 
 
 def p_binop(p):
@@ -84,38 +73,10 @@ def p_sign(p):
             | MINUS """
 
 
-def p_prim(p):
-    """prim : NUMQ
-            | FUNQ
-            | LISTQ
-            | EMPTYQ
-            | CONSQ
-            | CONS
-            | FIRST
-            | REST
-            | ARITY"""
-
-
 def p_id(p):
-    """id   : type
-            | type int
-            | type string"""
-
-
-def p_type(p):
-    """type :
-            | NAME
-            | REGION
-            | SERVER
-            | OS
-            | ID
-            | TAG"""
-
-
-# def p_id(p):
-#     '''id   : CHARACTER
-#             | id CHARACTER
-#             | id DIGIT '''
+    """id   :
+            | int
+            | string"""
 
 def p_int(p):
     """int  : DIGIT
@@ -125,11 +86,6 @@ def p_int(p):
 def p_string(p):
     """string  : CHARACTER
                | CHARACTER string"""
-
-
-def p_empty(p):
-    """empty    :
-                | EMPTY"""
 
 
 def p_error(p):

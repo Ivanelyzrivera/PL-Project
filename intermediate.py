@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# AUTHOR: Gloriel M. Soto Maldonado
 
 import sys
 import time
@@ -20,11 +21,11 @@ def get_droplets():
     return manager.get_all_droplets()
 
 
-def get_my_token(token):
+def get_token(token):
     return getpass.getpass()
 
 
-def create_droplet(token, name, region, os, ram, ssh):
+def create(token, name, region, os, ram, ssh):
     if len(ssh) < 1:
         ssh = ""
 
@@ -41,7 +42,7 @@ def create_droplet(token, name, region, os, ram, ssh):
     print("%s[Droplet]%s '%s' Created." % (c["g"], c["e"], name))
 
 
-def interactive_build():
+def build():
     num = int(input("How many droplets do you want to create: "))
 
     name = input("VPS name (if # of VPS > 1, name will become %name%-01, %name%-02 etc): ")
@@ -59,7 +60,7 @@ def interactive_build():
         ram = ram[:2]
 
     for n in xrange(num - 1):
-        x = create_droplet(token, name, region, os, ram)
+        x = create(token, name, region, os, ram)
         print("\033[1;32m[+]\033[0m Droplet '%s' created -> IP address '%s'" % (str(name + str("-" + n)), x.ip_address))
 
 
@@ -106,20 +107,21 @@ def parse_file(file):
     return d
 
 
-def create_droplets_from_list(drop_dic):
+def create_from_list(drop_dic):
     for num in range(0, drop_dic["amount"]):
         name = drop_dic["name"] + "-" + str(num)
         ram = str(drop_dic["ram"]) + "mb"
         img = drop_dic["image"]
         loc = drop_dic["location"]
         ssh = drop_dic["ssh_key"]
-        create_droplet(token, name, loc, img, ram, ssh)
+        create(token, name, loc, img, ram, ssh)
 
 
 def usage():
-    print("\n# python %s [options]" % sys.argv[0])
     print("")
     print("Please Add Your DigitalOcean Token in 'intermediate.py'")
+    print("# Run in CMD as: %s [options]" % sys.argv[0])
+    print("")
     print("Options: ")
     print("\t-l\t[arg]\t\t-\tList information about '[arg]' -> droplets, loc, img")
     print("\t-f\t[file.xml]\t-\tCreate droplets from XML schema, see README.")
