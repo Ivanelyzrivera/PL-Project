@@ -3,13 +3,13 @@ Hi! We are group U, and our group consists of Ivanelyz Rivera, Gloriel Soto and 
 
 We present #Infrastructure as a service (IaaS), this is a type of cloud computing service that offers essential compute, storage and networking resources that are on demand! 
 
-We wanted to cerate a language that lets users create servers by coding repeptitive tasks and automate the virtual server creations! Therefore, the project will be in the memory management branch of coding. 
+We wanted to create a language that lets users create servers by coding repetitive tasks and automate the virtual server creations! Therefore, the project will be in the memory management branch of coding.
 
 There's going to be a Lexical Analyzer, that is the first phase of the compiler. It breaks the syntax into a series of tokens, by removing any whitespace or comments that are in our code. 
 Also, our Syntax Analyzer is going to take the input from a lexical analyzer and analyzes the source code. 
-And, finally our intermediate code is were the droplets and main functions of the code are going to be. 
+And, finally our intermediate code is where the droplets and main functions of the code are going to be.
 The Droplets are a linux based VMs that are used to run on top of virtualized hardware.
-Each Droplet that we create, is a new server you can use and part of the cloud based infrstructure. 
+Each Droplet that we create, is a new server you can use and part of the cloud based infrastructure.
 ------------------------------- INSTRUCTIONS -------------------------------
 To create a New Droplet: 
 #To create a new Droplet, send a POST request to /v2/droplets setting the required attributes.
