@@ -78,6 +78,7 @@ def p_id(p):
             | int
             | string"""
 
+
 def p_int(p):
     """int  : DIGIT
             | DIGIT int"""
@@ -94,14 +95,5 @@ def p_error(p):
     raise TypeError("Error in Syntax. Check token above to fix.")
 
 
-print("Building Parser...")
 parser = yacc.yacc()
 print("Parser Built Successfully.")
-
-# Testing the parser
-# fileName = "Test.txt"
-# print("Parsing " + fileName + "...")
-# data = open(fileName, "r").read()
-# parser.parse(data)
-# print("Parsing " + fileName + " Successful.")
-# print("Finished.")

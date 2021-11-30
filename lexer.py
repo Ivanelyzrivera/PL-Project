@@ -83,15 +83,6 @@ def t_error(t):
     raise TypeError("Illegal character written above.")
 
 
-print("Building Lexer...")
 lex.lex()
 print("Lexer Built Successfully.")
 
-# Testing the lexer
-# data = open("Test.txt", "r").read()
-# lex.input(data)
-# while True:
-#     tok = lex.token()
-#     if not tok:
-#         break
-#     print(tok)
