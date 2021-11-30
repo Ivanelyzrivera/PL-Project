@@ -1,17 +1,16 @@
 #!/usr/bin/python
-###########################################################################
-#
-# ADD YOUR DigitalOcean TOKEN BELOW
-# ---------------------------------
-token = ""
-#
-###########################################################################
 
 import sys
 import time
 import digitalocean
 import xml.etree.ElementTree as ET
+from ply.cpp import xrange
 
+###########################################################################
+#
+token = "f2f119a305767d634c37bceb7c1cd2e6f8ab22316dbf6cbe7662fb2da3796fa7"
+#
+###########################################################################
 version = "1.0"
 c = {"r": "\033[1;31m", "g": "\033[1;32m", "y": "\033[1;33m", "e": "\033[0m"}
 manager = digitalocean.Manager(token=token)
@@ -52,7 +51,7 @@ def interactive_build():
     region = input("What region: ")
 
     for i in manager.get_all_images():
-        print("'%s'" % (i.slug))
+        print("'%s'" % i.slug)
     os = input("What base image: ")
 
     ram = input("What size RAM (e.g. 4096): ")
@@ -120,85 +119,11 @@ def create_droplets_from_list(drop_dic):
 def usage():
     print("\n# python %s [options]" % sys.argv[0])
     print("")
+    print("Please Add Your DigitalOcean Token in 'intermediate.py'")
     print("Options: ")
     print("\t-l\t[arg]\t\t-\tList information about '[arg]' -> droplets, loc, img")
     print("\t-f\t[file.xml]\t-\tCreate droplets from XML schema, see README.")
-    print("\t-i\t\t\t-\tCreate droplets from interactive menu (Easy)")
+    print("\t-i\t\t\t\t-\tCreate droplets from interactive menu (Easy)")
     print("\t-rm\t[id]\t\t-\tDelete droplet [id]")
     print("")
     exit(1)
-
-
-if __name__ == "__main__":
-
-    if token == "":
-        print("%s[Error]%s Please first set your DigitalOcean API token at the top of the script." % (c["r"], c["e"]))
-        exit()
-
-    if "-rm" in sys.argv:
-
-        id = int(sys.argv[sys.argv.index("-rm") + 1])
-
-        d = get_droplets()
-
-        try:
-            name = d[id].name
-        except:
-            print(
-                "%s[Error]%s Droplet ID out of range, do 'python %s -l droplets' to see how many droplets you have." % (
-                    c["r"], c["e"], sys.argv[0]))
-            exit()
-
-        ch = input("%s[Confirm]%s Are you sure you want to delete droplet '%s' [Y/N]: " % (c["r"], c["e"], name))
-
-        if "y" in ch or "Y" in ch:
-
-            try:
-                d[id].destroy()
-            except:
-                print("%s[Error]%s DataReadError from DigitalOcean, retry again later" % (c["r"], c["e"]))
-                exit(1)
-        print("%s[Done]%s Droplet '%s' destroyed." % (c["g"], c["e"], name))
-        exit()
-
-    elif "-l" in sys.argv:
-        option = sys.argv[sys.argv.index("-l") + 1]
-
-        if option.lower() == "img":
-            print("%s[Option]%s All valid base images." % (c["y"], c["e"]))
-            im = manager.get_distro_images()
-            for i in im:
-                print("%s[Image]%s %s -> '%s'" % (c["g"], c["e"], str(i.distribution + " " + i.name), i.slug))
-            exit()
-
-        elif option.lower() == "loc":
-            print("%s[Option]%s All regions." % (c["y"], c["e"]))
-            r = manager.get_all_regions()
-            for i in r:
-                print("%s[Region]%s %s -> '%s'" % (c["g"], c["e"], i.name, i.slug))
-            exit()
-
-        elif option.lower() == "droplets":
-            print("%s[Option]%s All your Droplets." % (c["y"], c["e"]))
-            d = get_droplets()
-            count = 0
-            for i in d:
-                print("%s[Droplet id: '%d']%s '%s' -> '%s'" % (c["g"], count, c["e"], i.name, i.ip_address))
-                count += 1
-            exit()
-
-        else:
-            print("%s[Error]%s Option '%s' not recognised, see '%s --help'" % (c["r"], c["e"], option, sys.argv[0]))
-            exit()
-
-    elif "-i" in sys.argv:
-        interactive_build()
-        exit()
-
-    elif "-f" in sys.argv:
-        list = parse_file(sys.argv[sys.argv.index("-f") + 1])
-        create_droplets_from_list(list)
-        exit()
-
-    else:
-        usage()
