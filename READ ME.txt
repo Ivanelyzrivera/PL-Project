@@ -25,3 +25,7 @@ To Create Multiple Droplets:
 
 #info https://docs.digitalocean.com/reference/api/api-reference/#operation/create_droplet
 
+Requirements:
+
+DigitalOcean Library
+pip install -U python-digitalocean
