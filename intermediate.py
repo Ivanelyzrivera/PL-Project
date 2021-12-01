@@ -6,6 +6,7 @@ import time
 import digitalocean
 import xml.etree.ElementTree as ET
 import json
+import requests
 
 ###########################################################################
 #
@@ -17,6 +18,9 @@ c = {"r": "\033[1;31m", "g": "\033[1;32m", "y": "\033[1;33m", "e": "\033[0m"}
 manager = digitalocean.Manager(token=token)
 
 ram = "s-1vcpu-1gb"
+
+
+headers = {"Authorization": "Bearer {}".format(token)}
 
 def get_droplets():
     return manager.get_all_droplets()
@@ -37,7 +41,7 @@ def create(token, name, region, os, ram):
 
 
 def build():
-#    print("build initial")
+    print("build initial")
 #    num = int(input("How many droplets do you want to create: "))
     num = 1
     name = input("VPS name (if # of VPS > 1, name will become %name%-01, %name%-02 etc): ")
@@ -117,3 +121,10 @@ def usage():
     print("\t-rm\t[id]\t\t-\tDelete droplet [id]")
     print("")
     exit(1)
+
+def delete_droplet(iden):
+    print(iden)
+    droplet_delete_action_url = f'https://api.digitalocean.com/v2/droplets/{iden}'    #Url that will be used for API request
+    response = requests.delete(droplet_delete_action_url, headers=headers)   #Sending the gathered information with post request to assign IP
+    print('Droplet deleted successfully!')
+    time.sleep(15)
