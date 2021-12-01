@@ -1,4 +1,5 @@
 # AUTHOR: Gloriel M. Soto Maldonado
+# Editor: Haniel Cordero
 
 import sys
 
@@ -23,13 +24,18 @@ if __name__ == "__main__":
         iden = int(sys.argv[sys.argv.index("-rm") + 1])
 
         d = intermediate.get_droplets()
+#        print(intermediate.get_droplets())
+
+        intermediate.delete_droplet(iden)
+
 
         try:
             name = d[iden].name
         except:
-            print(
-                "%s[Error]%s Droplet ID out of range, do 'python %s -l droplets' to see how many droplets you have." % (
-                    intermediate.c["r"], intermediate.c["e"], sys.argv[0]))
+            #print(
+            #    "%s[Error]%s Droplet ID out of range, do 'python %s -l droplets' to see how many droplets you have." % (
+            #        intermediate.c["r"], intermediate.c["e"], sys.argv[0]))
+            print(intermediate.get_droplets())
             exit()
 
             ch = input(
@@ -39,7 +45,10 @@ if __name__ == "__main__":
             if "y" in ch or "Y" in ch:
 
                 try:
-                    d[id].destroy()
+                    #d[id].destroy()
+                    intermediate.delete_droplet(iden)
+
+
                 except:
                     print("%s[Error]%s DataReadError from DigitalOcean, retry again later" % (
                         intermediate.c["r"], intermediate.c["e"]))
@@ -68,6 +77,7 @@ if __name__ == "__main__":
 
         elif option.lower() == "droplets":
             print("%s[Option]%s All your Droplets." % (intermediate.c["y"], intermediate.c["e"]))
+            print(intermediate.get_droplets())
             d = intermediate.get_droplets()
             count = 0
             for i in d:
