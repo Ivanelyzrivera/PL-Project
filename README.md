@@ -33,4 +33,7 @@ In the terminal type: pip install -U python-digitalocean
 4. In the terminal enter the PL-Project/main.py
 5. In the terminal type: -1 droplets 
 6. In the terminal type: -I img and -I loc , this should run the code. 
-7. If not you can enter in the terminal python3 main.py and it's going to run the code. 
+7. If not you can enter in the terminal python3 main.py and it's going to run the code.
+8. In the terminal type: main -l droplets to see the list of the availables Virtual Machines 
+9. In the terminal type: main -i to create a new Virtual Machine
+10. In the terminal type: main -rm <dropletId> to delete the Virtual Machine
