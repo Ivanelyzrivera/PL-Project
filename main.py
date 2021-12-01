@@ -20,12 +20,12 @@ if __name__ == "__main__":
 
     if "-rm" in sys.argv:
 
-        id = int(sys.argv[sys.argv.index("-rm") + 1])
+        iden = int(sys.argv[sys.argv.index("-rm") + 1])
 
         d = intermediate.get_droplets()
 
         try:
-            name = d[id].name
+            name = d[iden].name
         except:
             print(
                 "%s[Error]%s Droplet ID out of range, do 'python %s -l droplets' to see how many droplets you have." % (
@@ -86,9 +86,5 @@ if __name__ == "__main__":
         intermediate.build()
         exit()
 
-    elif "-f" in sys.argv:
-        lista = intermediate.parse_file(sys.argv[sys.argv.index("-f") + 1])
-        intermediate.create_from_list(lista)
-        exit()
     else:
         intermediate.usage()
