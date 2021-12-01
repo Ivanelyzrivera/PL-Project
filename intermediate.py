@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # AUTHOR: Gloriel M. Soto Maldonado
+# Editor: Haniel Cordero
 
 import sys
 import time
