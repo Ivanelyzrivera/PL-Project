@@ -1,19 +1,25 @@
-# AUTHOR: Gloriel M. Soto Maldonado
-# Editor: Haniel Cordero
+# AUTHORS: Gloriel M. Soto Maldonado
+#          Haniel Cordero
 
 import sys
-
-from ply import yacc
-import lexer
-import syntax
+# import lexer
+# import syntax
 import intermediate
 
-if __name__ == "__main__":
+
+def comp():
+    import lexer
+    import syntax
 
     lexer.lex
     syntax.yacc
 
+
+if __name__ == "__main__":
+
     if intermediate.token == "":
+        comp()
+
         print(
             "%s[Error]%s Please first set your DigitalOcean token in 'intermediate.py." % (
                 intermediate.c["r"], intermediate.c["e"]))
@@ -21,18 +27,19 @@ if __name__ == "__main__":
 
     if "-rm" in sys.argv:
 
+        comp()
+
         iden = int(sys.argv[sys.argv.index("-rm") + 1])
 
         d = intermediate.get_droplets()
-#        print(intermediate.get_droplets())
+        #        print(intermediate.get_droplets())
 
         intermediate.delete_droplet(iden)
-
 
         try:
             name = d[iden].name
         except:
-            #print(
+            # print(
             #    "%s[Error]%s Droplet ID out of range, do 'python %s -l droplets' to see how many droplets you have." % (
             #        intermediate.c["r"], intermediate.c["e"], sys.argv[0]))
             print(intermediate.get_droplets())
@@ -45,7 +52,7 @@ if __name__ == "__main__":
             if "y" in ch or "Y" in ch:
 
                 try:
-                    #d[id].destroy()
+                    # d[id].destroy()
                     intermediate.delete_droplet(iden)
 
 
@@ -57,6 +64,9 @@ if __name__ == "__main__":
             exit()
 
     elif "-l" in sys.argv:
+
+        comp()
+
         option = sys.argv[sys.argv.index("-l") + 1]
 
         if option.lower() == "img":
@@ -68,7 +78,7 @@ if __name__ == "__main__":
                     intermediate.c["g"], intermediate.c["e"], str(i.distribution + " " + i.name), i.slug))
             exit()
 
-        elif option.lower() == "loc":
+        elif option.lower() == "region":
             print("%s[Option]%s All regions." % (intermediate.c["y"], intermediate.c["e"]))
             r = intermediate.manager.get_all_regions()
             for i in r:
@@ -93,7 +103,13 @@ if __name__ == "__main__":
 
 
     elif "-i" in sys.argv:
+
+        comp()
+
         intermediate.build()
+        exit()
+
+    elif "-stop" in sys.argv:
         exit()
 
     else:

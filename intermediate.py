@@ -1,12 +1,10 @@
 #!/usr/bin/python
-# AUTHOR: Gloriel M. Soto Maldonado
-# Editor: Haniel Cordero
+# AUTHORS: Gloriel M. Soto Maldonado
+#          Haniel Cordero
 
 import sys
 import time
 import digitalocean
-import xml.etree.ElementTree as ET
-import json
 import requests
 
 ###########################################################################
@@ -20,8 +18,8 @@ manager = digitalocean.Manager(token=token)
 
 ram = "s-1vcpu-1gb"
 
-
 headers = {"Authorization": "Bearer {}".format(token)}
+
 
 def get_droplets():
     return manager.get_all_droplets()
@@ -43,7 +41,7 @@ def create(token, name, region, os, ram):
 
 def build():
     print("build initial")
-#    num = int(input("How many droplets do you want to create: "))
+    #    num = int(input("How many droplets do you want to create: "))
     num = 1
     name = input("VPS name (if # of VPS > 1, name will become %name%-01, %name%-02 etc): ")
 
@@ -58,7 +56,7 @@ def build():
     ram = "s-1vcpu-1gb"
 
     print(num, name, region, os, ram)
-#    for n in range(num - 1):
+    #    for n in range(num - 1):
     droplet = digitalocean.Droplet(token=token,
                                    name=name,
                                    region=region,
@@ -66,7 +64,8 @@ def build():
                                    size_slug=ram,
                                    backups=False)
     response = droplet.create()
-    print("Creating a ", ram, "'s VM named ", name, " in ", region, " with ", os, ". Please, wait a minute until creation.")
+    print("Creating a ", ram, "'s VM named ", name, " in ", region, " with ", os,
+          ". Please, wait a minute until creation.")
     time.sleep(5)
     print("[.                                                              ]")
     time.sleep(5)
@@ -91,9 +90,10 @@ def build():
     print("[............................COMPLETED..........................]")
     time.sleep(5)
 
-#    print("\033[1;32m[+]\033[0m Droplet '%s' created -> IP address '%s'" % (str(name + str("-" + n)), response.ip_address))
-    print(name,"'s VM has been created.")
+    #    print("\033[1;32m[+]\033[0m Droplet '%s' created -> IP address '%s'" % (str(name + str("-" + n)), response.ip_address))
+    print(name, "'s VM has been created.")
     print(get_droplets())
+
 
 def create_from_list(drop_dic):
     for num in range(0, drop_dic["amount"]):
@@ -101,7 +101,7 @@ def create_from_list(drop_dic):
         ram = "s-1vcpu-1gb"
         img = drop_dic["image"]
         region = drop_dic["region"]
-#        create(token, name, region, img, ram)
+        #        create(token, name, region, img, ram)
 
         droplet = digitalocean.Droplet(token=token,
                                        name=name,
@@ -112,20 +112,24 @@ def create_from_list(drop_dic):
 
         droplet.create()
 
+
 def usage():
     print("")
     print("# Run in CMD as: %s [options]" % sys.argv[0])
     print("")
     print("Options: ")
     print("\t-l\t[arg]\t\t-\tList information about '[arg]' -> droplets, region, img")
-    print("\t-i\t\t\t\t-\tCreate droplets from interactive menu (Easy)")
+    print("\t-i\t\t\t-\tCreate droplets from interactive menu (Easy)")
     print("\t-rm\t[id]\t\t-\tDelete droplet [id]")
+    print("\t-stop\t\t\t-\tExit program")
     print("")
     exit(1)
 
+
 def delete_droplet(iden):
     print(iden)
-    droplet_delete_action_url = f'https://api.digitalocean.com/v2/droplets/{iden}'    #Url that will be used for API request
-    response = requests.delete(droplet_delete_action_url, headers=headers)   #Sending the gathered information with post request to assign IP
+    droplet_delete_action_url = f'https://api.digitalocean.com/v2/droplets/{iden}'  # Url that will be used for API request
+    response = requests.delete(droplet_delete_action_url,
+                               headers=headers)  # Sending the gathered information with post request to assign IP
     print('Droplet deleted successfully!')
     time.sleep(15)
