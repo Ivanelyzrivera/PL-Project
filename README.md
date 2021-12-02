@@ -37,3 +37,12 @@ In the terminal type: pip install -U python-digitalocean
 8. In the terminal type: main -l droplets to see the list of the availables Virtual Machines 
 9. In the terminal type: main -i to create a new Virtual Machine
 10. In the terminal type: main -rm <dropletId> to delete the Virtual Machine
+
+ -------------EXAMPLES ON HOW IT SHOULD LOOK: --------------------------------
+ ![image](https://user-images.githubusercontent.com/70592721/144349836-252ff7a2-6cca-4371-a990-2a76c9af00b0.png)
+
+ 
+ 
+ 
+ 
+ 
