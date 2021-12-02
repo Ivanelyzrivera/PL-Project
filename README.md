@@ -40,6 +40,30 @@ In the terminal type: pip install -U python-digitalocean
 
  -------------EXAMPLES ON HOW IT SHOULD LOOK: --------------------------------
  ![image](https://user-images.githubusercontent.com/70592721/144349836-252ff7a2-6cca-4371-a990-2a76c9af00b0.png)
+ Menu to choose: 
+ ![image](https://user-images.githubusercontent.com/70592721/144349901-9fdd581c-d698-468e-ba2f-097bac049dba.png)
+ ![image](https://user-images.githubusercontent.com/70592721/144349927-e6112d32-2c52-4136-89d0-4f35b3f24226.png)
+ ![image](https://user-images.githubusercontent.com/70592721/144349961-3fff976c-4cda-4cde-8449-dcc2ac49de3f.png)
+ Creating Droplet: 
+![image](https://user-images.githubusercontent.com/70592721/144349998-4ea92eb8-2717-4783-aa0f-01cb12a39376.png)
+ Choosing region:
+ ![image](https://user-images.githubusercontent.com/70592721/144350068-86f37f7e-e2b4-4db0-b017-7352f76fe678.png)
+ Choosing the base image: "rockylinux-8-x64
+ ![image](https://user-images.githubusercontent.com/70592721/144350111-9f0d98ff-347c-4933-93fe-51b4424c5348.png)
+ Creating of the droplet1:
+![image](https://user-images.githubusercontent.com/70592721/144350141-6e51a488-5f7c-42b1-b64b-e13d7f2d67e9.png)
+ Delete the droplet: 
+ ![image](https://user-images.githubusercontent.com/70592721/144350228-97a1f2b6-b1a5-4575-9061-456aaf0dae2b.png)
+Confirmed: 
+ ![image](https://user-images.githubusercontent.com/70592721/144350254-e32107d3-c13f-4348-bf25-4ea0d479f72f.png)
+
+ 
+Note: When a droplet is created we get an alert via email indicating the droplet name, ip address, username and password. 
+ ![image](https://user-images.githubusercontent.com/70592721/144350388-73737785-5533-4e61-820a-6dd883648a2f.png)
+
+
+
+
 
  
  
